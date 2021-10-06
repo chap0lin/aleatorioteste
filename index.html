@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hellou</h1>
+  <p></p>
+  <script>
+    const a = new XMLHttpRequest()
+    const url = 'http://www.google.com'
+    // const url = 'http://www.whateverorigin.org/get?url=http://www.postosjarjour.com/'
+    a.open("GET", url)
+    a.send()
+
+    a.onreadystatechange = (e) => {
+      document.querySelector('p').innerHTML = a.responseText
+    }
+
+  </script>
+</body>
+</html>
