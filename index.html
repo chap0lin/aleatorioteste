@@ -7,19 +7,55 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Hellou?</h1>
-  <p></p>
+  <h1>Preço da gasolina no jarjour:</h1>
+  <p style="font-size: larger;"></p>
   <script>
     const a = new XMLHttpRequest()
-    const url = 'https://www.google.com'
+    const url = `https://api.allorigins.win/get?url=${encodeURIComponent('https://www.postosjarjour.com')}`
     // const url = 'http://www.whateverorigin.org/get?url=http://www.postosjarjour.com/'
     a.open("GET", url)
     a.send()
 
-    a.onreadystatechange = (e) => {
-      document.querySelector('p').innerHTML = a.responseText
+    a.onload = (e) => {
+      // console.log(a.responseText)
+      console.log('hey')
+      if(a.responseText){
+        // console.log(a.responseText)
+      }
+      if(a.responseText){
+        var string = JSON.stringify(a.responseText)
+        var i1 = string.search('>Gasolina Comum</s')
+        string = string.substring(i1)
+        i1 = string.search('<span')
+        string = string.substring(i1)
+        var i2 = string.search('</span')
+        string = string.substr(35,i2-35)
+        console.log(string)
+        document.querySelector('p').innerHTML = string
+      }
+
     }
 
+  </script>
+  <script>
+    //https://allorigins.win/ - Proxy server
+      // fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://www.postosjarjour.com')}`)
+      //   .then(response => {
+      //     if (response.ok) return response.json()
+      //     throw new Error('Network response was not ok.')
+      //   })
+      //   .then(data => {
+      //     var string = data.contents
+      //     var i1 = string.search('div id="comp-kptqz3qz"')
+      //     string = string.substring(i1)
+      //     i1 = string.search('<span')
+      //     string = string.substring(i1)
+      //     var i2 = string.search('</span')
+      //     string = string.substr(29,i2-29)
+      //     console.log(string)
+      //     document.querySelector('p').innerHTML = string
+
+      //   });
   </script>
 </body>
 </html>
